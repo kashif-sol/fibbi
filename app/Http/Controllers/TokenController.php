@@ -17,7 +17,11 @@ class TokenController extends Controller
         ->update(['api_token' => $token,
                     'api_secret'=>$secret,
     ]);
-    return redirect('token');
+    return redirect('activate');
 
+    }
+    public function data(){
+        $data=User::where('id',1)->get();
+        return view('token',compact('data'));
     }
 }

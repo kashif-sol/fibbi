@@ -170,7 +170,7 @@
             /* Divider/Top */
 
             box-shadow: 0px 0px 5px rgb(0 0 0 / 5%), 0px 1px 2px rgb(0 0 0 / 15%);
-            border-radius: 0px 0px 8px 8px;
+            border-radius: 8px 8px 8px 8px;
 
         }
 
@@ -210,13 +210,17 @@
         .card {
             background: #FFFFFF;
             box-shadow: 0px 0px 5px rgb(0 0 0 / 5%), 0px 1px 2px rgb(0 0 0 / 15%);
+            font-family: 'SFProText';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
         }
 
     </style>
 
 </head>
 
-<body>
+<body style="padding: 20px">
 
     <div class="container mt-3">
         <div class="card first">
@@ -250,11 +254,11 @@
 
                                     <div class="col-md-12">
                                         <label>Token</label><br>
-                                        <input type="text" class="inputs" value="hendfijhfdjosjkadsdfdsfjodjfsok">
+                                        <input type="text" class="inputs" name="api_token" value="{{$link->api_token}}" disabled>
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label>Secret Key</label><br>
-                                        <input type="text" class="inputs" value="hendfijhfdjosjsdfsdgsdkadjodjfsok">
+                                        <input type="text" class="inputs" name="api_secret" value="{{$link->api_secret}}" disabled>
                                     </div>
 
 
@@ -270,8 +274,11 @@
                 </div>
             </div>
         </div>
-
+        <form action="settings" method="post">
+            @csrf
+           
         <div class="row" style="margin-top:20px">
+          
             <div class="col-md-5">
 
                 <div class="tooltip">
@@ -306,26 +313,26 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h1 class="header">Setup the App function</h1>
-                            <form action="" method="post">
+                            
                                 <div class="row">
 
                                     <div class="col-md-12">
                                         <label>Product Identifier</label><br>
-                                        <select name="pets" class="product-identifier" id="pet-select">
-                                            <option value="">SKU</option>
-                                            <option value="test">Test</option>
+                                        <select name="product_identifier" class="product-identifier" id="product_identifier">
+                                            <option value="SKU"  @if ($newsetting->product_identifier == "SKU") selected @endif>SKU</option>
+                                            <option value="Test" @if ($newsetting->product_identifier == "Test") selected @endif>Test</option>
 
                                         </select>
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label>Google Analytics ID</label><br>
-                                        <input type="text" class="inputs" value="UA-12345678">
+                                        <input type="text" class="inputs" name="google_id" value="{{$newsetting->google_id}}">
                                     </div>
 
 
                                 </div>
 
-                            </form>
+                          
                         </div>
                     </div>
                 </div>
@@ -345,14 +352,15 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h1 class="header">Set the button position</h1>
-                            <form action="" method="post">
+                           
                                 <div class="row">
 
                                     <div class="col-md-12">
                                         <label>Icon position</label><br>
-                                        <select name="pets" class="product-identifier" id="select">
-                                            <option value="">Insert Above</option>
-                                            <option value="test">Test</option>
+                                        <select name="btn_postition" class="product-identifier" id="btn_postition">
+                                         
+                                            <option value="Down" @if ($newsetting->btn_postition == "Down") selected @endif>Down</option>
+                                            <option value="Test" @if ($newsetting->btn_postition == "Test") selected @endif>Test</option>
 
                                         </select>
                                     </div>
@@ -360,6 +368,12 @@
                                     <div class="col-md-12" style=" margin-top: 10px;">
                                         <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#basicModal">Click to open Modal</a>
 
+                                    </div>
+                                    
+
+                                    <div class="col-md-12 mt-4">
+                                        <label>CSS element</label><br>
+                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css}}">
                                     </div>
                                     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -375,7 +389,7 @@
                                                 <div class="modal-body">
                                                     <p>Smart Selector</p>
                                                     <label for="path">1. Path to use smart selector</label>
-                                                    <input type="text" class="inputs" value="https://store.myshopify.com">
+                                                    <input type="text" class="inputs" value="{{$link->name}}" disabled>
                                                     <div class="col-md-12 mt-3">
                                                         <p>2. A new window will be opened from your site</p>
                                                     </div>
@@ -385,28 +399,28 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" class="btn btn-secondary">Save
-                                                        changes</button>
+                                                    {{-- <a data-target="{{$link->name}}" target="_blank" class="btn btn-secondary">Save changes</a> --}}
+                                                    <a href="https://{{$link->name}}"  target="_blank" class="btn btn-secondary">Save Changes</a>,
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12 mt-4">
-                                        <label>CSS element</label><br>
-                                        <input type="text" class="inputs" value="#gallaey">
-                                    </div>
-
 
                                 </div>
-
-                            </form>
+                               
+                            
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+            <div class="col-md-12 mb-2">
+                <button type="submit" style="float: right;background: #008060 !important;" class="btn btn-secondary">Save</button>
+            </div>
+        </form>
+        </div>
+        
     </div>
 </body>
 @endsection

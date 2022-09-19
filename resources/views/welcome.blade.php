@@ -59,7 +59,7 @@
 
 </head>
 
-<body class="mt-2">
+<body class="mt-2" style="padding: 20px">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -92,9 +92,9 @@
                     <p class="para">To get started using the Shopify app, <span style="font-weight: bold;">you need an
                             account</span> on the Fibbl platform where you will find the Shopify specific tokens.</p>
 
-                    <p class="parat" style="line-height: 25px ;"><span style="color: #2C6ECB;font-size: 16px;"> Click
+                    <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 16px;"> Click
                             here
-                            to sign up and create an account.</span></p>
+                            to sign up and create an account.</span></a>
 
                     <p class="para"> Once logged in, go to this link to retrieve your tokens.</p>
                     <div class="row">

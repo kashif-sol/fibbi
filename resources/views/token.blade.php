@@ -70,7 +70,7 @@
         </style>
     </head>
 
-    <body class="mt-3">
+    <body class="mt-3" style="padding: 20px">
         <div class="container">
 
 
@@ -89,20 +89,20 @@
                         <div class="card-body">
                             <div class="card-title">
                                 <h1 class="header">Token</h1>
-                                <form action="token" method="post" >
+                                <form action="post_token" method="post" >
                                     @csrf
                                     <div class="row">
-
+                                        @foreach($data as $data)
                                         <div class="col-md-12">
                                             <label>Token</label><br>
-                                            <input type="text" class="inputs" name="api_token" value="hendfijhfdjosjkadsdfdsfjodjfsok">
+                                            <input type="text" class="inputs" name="api_token" value="{{$data->api_token}}">
                                         </div>
                                         <div class="col-md-12 mt-4">
                                             <label>Secret Key</label><br>
-                                            <input type="text" class="inputs" name="api_secret" value="hendfijhfdjosjsdfsdgsdkadjodjfsok">
+                                            <input type="text" class="inputs" name="api_secret" value="{{$data->api_secret}}">
                                         </div>
 
-
+                                        @endforeach
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-9"></div>
