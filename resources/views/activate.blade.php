@@ -230,7 +230,7 @@
                         <div class="col-md-10">
                             <p style="margin-top: 4px;">The Fibbi app is <b>deactivated</b>.</p>
                         </div>
-                        <div class="col-md-2" style="text-align: left"><button class="btn btn-secondary" style="float: right;background: #008060 !important;">Activate</button></div>
+                        <div class="col-md-2" style="text-align: left"><button class="btn btn-secondary" id="btntop" onclick="changevalue()" name="status" value="0" style="float: right;background: #008060 !important;">Activate</button></div>
                     </div>
                 </div>
             </div>
@@ -423,6 +423,27 @@
         
     </div>
 </body>
+<script type="text/javascript">
+    function changevalue(){
+      currentvalue = document.getElementById('btntop').value;
+      if(currentvalue == 0){
+       document.getElementById("btntop").value=1;
+
+      }else{
+         document.getElementById("btntop").value=0;
+      }
+      console.log(currentvalue);
+      var id = currentvalue;
+      $.ajax({
+        method: 'post',
+            url: "/activatebtn/" + id,
+            success: function(data) {
+               console.log('dt');
+            
+            }
+        });
+    }
+    </script>
 @endsection
 
 

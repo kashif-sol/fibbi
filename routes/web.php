@@ -24,4 +24,5 @@ Route::get('token',[TokenController::class,'data']);
 Route::get('activate',[SettingsController::class,'get']); 
     // return view('activate');
 Route::post('post_token',[TokenController::class,'index']);
-Route::post('settings',[SettingsController::class,'index']);
+Route::post('settings',[SettingsController::class,'index']); 
+Route::post('activatebtn',[SettingsController::class,'status']); 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class SettingsController extends Controller
 {
@@ -35,5 +37,29 @@ class SettingsController extends Controller
         $newsetting = Setting::where('user_id',1 )->first();
         $link=User::where('id',1)->first();
       return view('activate',compact('newsetting','link'));
+    }
+    public function status(Request $request){
+      $user=User::where('id',1)->first();
+      $status=$request->status;
+      
+      $user_id=$user->id;
+      DB::table('settings')
+                ->where('user_id', $user_id)
+                ->update([
+                    'status' => $status,
+                   
+                ]);
+
+    return redirect('activate');
+    }
+
+    public function model_api(){
+     
+      $response = Http::withHeaders([
+        "token" =>"token_2703122e819cf41e47aeedf04c511c980bfa504ea86fa9424d8d0bb347ff5274",
+        "secret" =>"secret_33c2125207246fefce8f2c6903933b997d626968"])->get('https://api.fibbl.com/models/v1/1234');
+        return response()->json(['status' => "success" , "data" => $response]);
+    
+    
     }
 }
