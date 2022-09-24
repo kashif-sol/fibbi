@@ -433,14 +433,17 @@
          document.getElementById("btntop").value=0;
       }
       console.log(currentvalue);
-      var id = currentvalue;
+      var status = currentvalue;
       $.ajax({
-        method: 'post',
-            url: "/activatebtn/" + id,
-            success: function(data) {
-               console.log('dt');
-            
-            }
+       url: "/activatebtn",
+        type:"POST",
+            data:{
+          status:status,
+         
+        },
+        success:function(response){
+          console.log(response);
+        }
         });
     }
     </script>
