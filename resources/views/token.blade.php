@@ -89,20 +89,20 @@
                         <div class="card-body">
                             <div class="card-title">
                                 <h1 class="header">Token</h1>
-                                <form action="post_token" method="post" >
-                                    @csrf
+                                <form action="{{route('saveToken')}}" method="POST">
+                                    @sessionToken
                                     <div class="row">
-                                        @foreach($data as $data)
+                                       
                                         <div class="col-md-12">
                                             <label>Token</label><br>
-                                            <input type="text" class="inputs" name="api_token" value="{{$data->api_token}}">
+                                            <input type="text" class="inputs" name="api_token" value="{{$data->api_token ?? ''}}">
                                         </div>
                                         <div class="col-md-12 mt-4">
                                             <label>Secret Key</label><br>
-                                            <input type="text" class="inputs" name="api_secret" value="{{$data->api_secret}}">
+                                            <input type="text" class="inputs" name="api_secret" value="{{$data->api_secret ?? ''}}">
                                         </div>
 
-                                        @endforeach
+                                      
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-9"></div>

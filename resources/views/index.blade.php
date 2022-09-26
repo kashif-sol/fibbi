@@ -1,6 +1,5 @@
 @extends('layouts.website')
-@section('content')
-<head>
+@push('styles')
 
     <style>
         .heading {
@@ -57,8 +56,8 @@
 
     </style>
 
-</head>
-
+@endpush
+@section('content')
 <body class="mt-2" style="padding: 20px">
     <div class="container-fluid">
         <div class="card">
@@ -99,7 +98,7 @@
                     <p class="para"> Once logged in, go to this link to retrieve your tokens.</p>
                     <div class="row">
                         <div class="col-sm-3">
-                            <a class="btn btn-secondary" href="token" style="background: #008060">Activate Fibbi</a>
+                            <a class="btn btn-secondary" href="{{route('addToken')}}" style="background: #008060">Activate Fibbi</a>
                             <a class="second-btn">learn More</a>
                         </div>
                         <div class="col-sm-3">

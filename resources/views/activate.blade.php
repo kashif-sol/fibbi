@@ -1,7 +1,6 @@
 
 @extends('layouts.website')
-@section('content')
-<head>
+@push('styles')
     <style>
         .first {
             display: flex;
@@ -218,7 +217,9 @@
 
     </style>
 
-</head>
+@endpush
+
+@section('content')
 
 <body style="padding: 20px">
 
@@ -228,20 +229,20 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-md-10">
-                            <p style="margin-top: 4px;">The Fibbi app is <b>deactivated</b>.</p>
+                            <p style="margin-top: 4px;">The Fibbl app is <b>activated</b>.</p>
                         </div>
-                        <div class="col-md-2" style="text-align: left"><button class="btn btn-secondary" id="btntop" onclick="changevalue()" name="status" value="0" style="float: right;background: #008060 !important;">Activate</button></div>
+                        <div class="col-md-2" style="text-align: left"><button class="btn btn-default" id="btntop" onclick="changevalue()" name="status" value="0" style="float: right; border:1px solid black">Deactivate</button></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-md-5">
-                <h1 class="header">Fibbi token</h1>
+                <h1 class="header">Fibbl token</h1>
                 <div class="row">
-                    <p class="para">For authorization and use of Fibbl’s Shopify app, company specific tokens
-                        needs
-                        to be added. Token and secret can be found here in the Fibbl platform. </p>
+                    <p class="para">For authorization and use of Fibbl's Shopify app, company specific tokens needs to be added. 
+                        Token and secret can be found here in the Fibbl platform. 
+                    </p>
                 </div>
             </div>
             <div class="col-md-7">
@@ -254,18 +255,18 @@
 
                                     <div class="col-md-12">
                                         <label>Token</label><br>
-                                        <input type="text" class="inputs" name="api_token" value="{{$link->api_token}}" disabled>
+                                        <input type="text" class="inputs" readonly name="api_token" value="{{$link->api_token}}" disabled>
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label>Secret Key</label><br>
-                                        <input type="text" class="inputs" name="api_secret" value="{{$link->api_secret}}" disabled>
+                                        <input type="text" class="inputs" readonly name="api_secret" value="{{$link->api_secret}}" disabled>
                                     </div>
 
 
                                 </div>
                                 <div class="row">
                                     <div class="col-md-10"></div>
-                                    <div class="col-md-2 mt-4"> <button type="submit" class="btn btn-secondary" style="background: #008060 !important; float: right;">Disconnect</button>
+                                    {{-- <div class="col-md-2 mt-4"> <button type="submit" class="btn btn-secondary" style="background: #008060 !important; float: right;">Disconnect</button> --}}
                                     </div>
                                 </div>
                             </form>
@@ -275,11 +276,10 @@
             </div>
         </div>
         <form action="settings" method="post">
-            @csrf
-           
+            @sessionToken
         <div class="row" style="margin-top:20px">
-          
-            <div class="col-md-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-4" style="margin-right: 16px; padding: 0;">
 
                 <div class="tooltip">
                     <!-- <span class="tooltiptext">Tooltip text</span> -->
@@ -301,14 +301,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row"> --}}
                     <p class="para">For authorization and use of Fibbl’s Shopify app, company specific tokens
                         needs
                         to be added. Token and secret can be found here in the Fibbl platform. </p>
-                </div>
+                {{-- </div> --}}
 
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
@@ -319,14 +319,14 @@
                                     <div class="col-md-12">
                                         <label>Product Identifier</label><br>
                                         <select name="product_identifier" class="product-identifier" id="product_identifier">
-                                            <option value="SKU"  @if ($newsetting->product_identifier == "SKU") selected @endif>SKU</option>
-                                            <option value="Test" @if ($newsetting->product_identifier == "Test") selected @endif>Test</option>
+                                            <option value="SKU"  @if (isset($newsetting) && $newsetting->product_identifier == "SKU") selected @endif>SKU</option>
+                                            <option value="Test" @if (isset($newsetting) && $newsetting->product_identifier == "Test") selected @endif>Test</option>
 
                                         </select>
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label>Google Analytics ID</label><br>
-                                        <input type="text" class="inputs" name="google_id" value="{{$newsetting->google_id}}">
+                                        <input type="text" class="inputs" name="google_id" value="{{isset($newsetting) && $newsetting->google_id}}">
                                     </div>
 
 
@@ -340,14 +340,15 @@
         </div>
 
         <div class="row" style="margin-top:20px;margin-bottom: 20px;">
-            <div class="col-md-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-4" style="margin-right: 16px; padding: 0;">
                 <h1 class="header">Button position</h1>
                 <div class="row">
                     <p class="para">The app will by default add standardized clickable icons which represents the
                         different display technologies.</p>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
@@ -359,27 +360,27 @@
                                         <label>Icon position</label><br>
                                         <select name="btn_postition" class="product-identifier" id="btn_postition">
                                          
-                                            <option value="Down" @if ($newsetting->btn_postition == "Down") selected @endif>Down</option>
-                                            <option value="Test" @if ($newsetting->btn_postition == "Test") selected @endif>Test</option>
+                                            <option value="Down" @if (isset($newsetting) && $newsetting->btn_postition == "Down") selected @endif>Down</option>
+                                            <option value="Test" @if (isset($newsetting) && $newsetting->btn_postition == "Test") selected @endif>Test</option>
 
                                         </select>
                                     </div>
 
                                     <div class="col-md-12" style=" margin-top: 10px;">
-                                        <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#basicModal">Click to open Modal</a>
+                                        <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#basicModal">Select element</a>
 
                                     </div>
                                     
 
                                     <div class="col-md-12 mt-4">
                                         <label>CSS element</label><br>
-                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css}}">
+                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css ?? ''}}">
                                     </div>
                                     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <p class="modal-title" id="myModalLabel"> <b> Basic Modal</b></p>
+                                                    <p class="modal-title" id="myModalLabel"> <b> Smart selector</b></p>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="    border: 1px solid white;
                                                         background: white;
                                                         font-size: 22px;">
@@ -389,7 +390,7 @@
                                                 <div class="modal-body">
                                                     <p>Smart Selector</p>
                                                     <label for="path">1. Path to use smart selector</label>
-                                                    <input type="text" class="inputs" value="{{$link->name}}" disabled>
+                                                    <input type="text" class="inputs" value="{{$response['onlineStorePreviewUrl'] ?? ''}}" disabled>
                                                     <div class="col-md-12 mt-3">
                                                         <p>2. A new window will be opened from your site</p>
                                                     </div>
@@ -400,7 +401,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
                                                     {{-- <a data-target="{{$link->name}}" target="_blank" class="btn btn-secondary">Save changes</a> --}}
-                                                    <a href="https://{{$link->name}}"  target="_blank" class="btn btn-secondary">Save Changes</a>,
+                                                    <a href="{{$response['onlineStorePreviewUrl'].'?smartSelector=true'}}"  target="_blank" class="btn btn-success">Start choosing</a>,
                                                 </div>
                                             </div>
                                         </div>
@@ -423,6 +424,10 @@
         
     </div>
 </body>
+
+@endsection
+
+@push('scripts')
 <script type="text/javascript">
     function changevalue(){
       currentvalue = document.getElementById('btntop').value;
@@ -433,12 +438,15 @@
          document.getElementById("btntop").value=0;
       }
       console.log(currentvalue);
+      var token = document.getElementsByClassName("session-token");
+      console.log(token);
       var status = currentvalue;
       $.ajax({
        url: "/activatebtn",
         type:"POST",
             data:{
           status:status,
+          token:token
          
         },
         success:function(response){
@@ -447,6 +455,4 @@
         });
     }
     </script>
-@endsection
-
-
+@endpush

@@ -5,55 +5,72 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class SettingsController extends Controller
 {
-    public function index(Request $req){
-      $user=User::where('id',1)->first();
-    //   dd($user->id);
-      $product_identifier=$req->product_identifier;
-      $google_id=$req->google_id;
-      $btn_postition=$req->btn_postition;
-      $css=$req->css;
-      $user_id=$user->id;
-      $newsetting = Setting::updateOrCreate([
-        //Add unique field combo to match here
-        //For example, perhaps you only want one entry per user:
-        'user_id'   => $user_id ,
-    ],[
-        'product_identifier'     => $product_identifier,
-        'google_id' => $google_id,
-        'btn_postition'    => $btn_postition,
-        'css'   => $css
-      
-    ]);
-    $newsetting->save();
-   return redirect('activate');
+    public function index(Request $req)
+    {
 
-    }
-    public function get(){
-        $newsetting = Setting::where('user_id',1 )->first();
-        $link=User::where('id',1)->first();
-      return view('activate',compact('newsetting','link'));
-    }
-    public function status(Request $request){
-      $user=User::where('id',1)->first();
-      $status=$request->status;
-      
-      $user_id=$user->id;
-      DB::table('settings')
-                ->where('user_id', $user_id)
-                ->update([
-                    'status' => $status,
-                   
-                ]);
+        $user=User::where('id',1)->first();
+        $product_identifier=$req->product_identifier;
+        $google_id=$req->google_id;
+        $btn_postition=$req->btn_postition;
+        $css=$req->css;
+        $user_id=$user->id;
+        $newsetting = Setting::updateOrCreate([
+            'user_id'   => $user_id ,
+        ],[
+            'product_identifier'     => $product_identifier,
+            'google_id' => $google_id,
+            'btn_postition'    => $btn_postition,
+            'css'   => $css
+        
+      ]);
+      $newsetting->save();
+      return redirect('activate');
+
+  }
+
+
+  public function activeFibbl()
+  {
+      $newsetting = Setting::where('user_id',Auth::user()->id)->first();
+      $link=User::where('id',Auth::user()->id)->first();
+      $shop = Auth::user();
+      $query = '{
+        products(first: 1, query:"status:active") {
+          edges {
+            node {
+              id
+              title
+              status
+              onlineStoreUrl
+            onlineStorePreviewUrl
+            }
+          }
+        }
+      }';
+      $product=$shop->api()->graph($query);
+      $response = $product['body']['data']['products']['edges'][0]['node'];
+      return view('activate',compact('newsetting','link','response'));
+  }
+  
+  public function status(Request $request)
+  {
+ 
+    dd($request->status);
+    DB::table('settings')
+      ->where('user_id', Auth::user()->id)
+      ->update(['status' => $request->status, ]);
 
     return redirect('activate');
-    }
+  }
 
-    public function model_api(){
+    public function model_api()
+    {
      
       $response = Http::withHeaders([
         "token" =>"token_2703122e819cf41e47aeedf04c511c980bfa504ea86fa9424d8d0bb347ff5274",

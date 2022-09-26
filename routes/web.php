@@ -1,9 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TokenController;
-use Illuminate\Routing\Route as RoutingRoute;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['verify.shopify'])->name('home');
-Route::get('token',[TokenController::class,'data']);
 
-Route::get('activate',[SettingsController::class,'get']); 
-    // return view('activate');
-Route::post('post_token',[TokenController::class,'index']);
-Route::post('settings',[SettingsController::class,'index']); 
-Route::post('activatebtn',[SettingsController::class,'status']); 
+
+
+
+Route::middleware(['verify.shopify'])->group(function () {
+    Route::get('/',[TokenController::class,'home'])->name('home');
+    Route::get('addtoken',[TokenController::class,'tokenForm'])->name('addToken');
+    Route::post('save_token',[TokenController::class,'saveToken'])->name('saveToken');
+    Route::get('activate',[SettingsController::class,'activeFibbl']);
+    Route::post('settings',[SettingsController::class,'index']); 
+    Route::post('activatebtn',[SettingsController::class,'status']); 
+});
