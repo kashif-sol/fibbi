@@ -355,7 +355,7 @@ if(isset($newsetting))
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label>Google Analytics ID</label><br>
-                                        <input type="text" class="inputs" name="google_id" value="{{isset($newsetting) && $newsetting->google_id}}">
+                                        <input type="text" class="inputs" name="google_id" value="{{ $newsetting->google_id ?: '' }}">
                                     </div>
 
 

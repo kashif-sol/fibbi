@@ -39,6 +39,7 @@ class SettingsController extends Controller
   public function activeFibbl()
   {
       $newsetting = Setting::where('user_id',Auth::user()->id)->first();
+
       $link=User::where('id',Auth::user()->id)->first();
       $shop = Auth::user();
       $query = '{
