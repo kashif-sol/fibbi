@@ -349,7 +349,7 @@ if(isset($newsetting))
                                         <label>Product Identifier</label><br>
                                         <select name="product_identifier" class="product-identifier" id="product_identifier">
                                             <option value="SKU"  @if (isset($newsetting) && $newsetting->product_identifier == "SKU") selected @endif>SKU</option>
-                                            <option value="Test" @if (isset($newsetting) && $newsetting->product_identifier == "Test") selected @endif>Test</option>
+                                            <option value="ID" @if (isset($newsetting) && $newsetting->product_identifier == "ID") selected @endif>ID</option>
 
                                         </select>
                                     </div>
@@ -389,8 +389,8 @@ if(isset($newsetting))
                                         <label>Icon position</label><br>
                                         <select name="btn_postition" class="product-identifier" id="btn_postition">
                                          
-                                            <option value="Down" @if (isset($newsetting) && $newsetting->btn_postition == "Down") selected @endif>Down</option>
-                                            <option value="Test" @if (isset($newsetting) && $newsetting->btn_postition == "Test") selected @endif>Test</option>
+                                            <option value="Before" @if (isset($newsetting) && $newsetting->btn_postition == "Before") selected @endif>Before</option>
+                                            <option value="After" @if (isset($newsetting) && $newsetting->btn_postition == "After") selected @endif>After</option>
 
                                         </select>
                                     </div>
