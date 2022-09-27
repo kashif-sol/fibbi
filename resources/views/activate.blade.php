@@ -445,7 +445,7 @@ if(isset($newsetting))
                 </div>
             </div>
         </div>
-            <div class="col-md-12 mb-2">
+            <div class="col-md-11 mb-2">
                 <button type="submit" style="float: right;background: #008060 !important;" class="btn btn-secondary">Save</button>
             </div>
         </form>
