@@ -224,12 +224,16 @@
 
 @php 
 
+$btn_label = "Deactivated";
+$btn_val = 1;
+$btn_value = "Activate";
+
 if(isset($newsetting))
 {
     if($newsetting->status == 1)
     {
         $btn_label = "Activated";
-        $btn_val = 1;
+        $btn_val = 0;
         $btn_value = "Deactivate";
     }else{
         $btn_label = "Deactivated";
