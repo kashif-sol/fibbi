@@ -42,6 +42,12 @@ class TokenController extends Controller
     public function tokenForm()
     {
         $data = User::where('id', Auth::user()->id)->first();
+        if(isset($data)){
+            if(isset($data->api_token) && isset($data->api_secret) )
+            {
+                return redirect('activate');
+            }
+        }
         return view('token', compact('data'));
     }
 }
