@@ -25,5 +25,5 @@ Route::middleware(['verify.shopify'])->group(function () {
     Route::post('save_token',[TokenController::class,'saveToken'])->name('saveToken');
     Route::get('activate',[SettingsController::class,'activeFibbl'])->name('activate');
     Route::post('settings',[SettingsController::class,'index']); 
-    Route::post('activatebtn',[SettingsController::class,'status']); 
+    Route::post('activatebtn',[SettingsController::class,'status'])->name("activatebtn"); 
 });

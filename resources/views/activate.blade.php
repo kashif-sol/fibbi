@@ -252,12 +252,16 @@ if(isset($newsetting))
         <div class="card first">
             <div class="card-body">
                 <div class="card-title">
+                    <form action="activatebtn" method="post">
+                        @sessionToken
+                        <input type="hidden" name="status" value="{{$btn_val}}" >
                     <div class="row">
                         <div class="col-md-10">
                             <p style="margin-top: 4px;">The Fibbl app is <b>{{$btn_label}}</b>.</p>
                         </div>
-                        <div class="col-md-2" style="text-align: left"><button class="btn btn-secondary" id="btntop" onclick="changevalue()" name="status" value="{{$btn_val}}" >{{$btn_value}}</button></div>
+                        <div class="col-md-2" style="text-align: left"><button type="submit" class="btn btn-secondary" id="btntop"  name="status" value="{{$btn_val}}" >{{$btn_value}}</button></div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
