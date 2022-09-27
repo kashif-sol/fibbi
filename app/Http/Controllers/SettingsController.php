@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 
 class SettingsController extends Controller
 {
     public function index(Request $req)
     {
-
-        $user=User::where('id',1)->first();
+       
+        $user=User::where('id',Auth::user()->id)->first();
         $product_identifier=$req->product_identifier;
         $google_id=$req->google_id;
         $btn_postition=$req->btn_postition;
         $css=$req->css;
-        $user_id=$user->id;
+        $user_id= Auth::user()->id;
         $newsetting = Setting::updateOrCreate([
             'user_id'   => $user_id ,
         ],[
@@ -30,7 +31,7 @@ class SettingsController extends Controller
         
       ]);
       $newsetting->save();
-      return redirect('activate');
+      return Redirect::tokenRedirect('activate', ['notice' => 'Congratulations ! Your Setting has been saved']);
 
   }
 
@@ -61,12 +62,12 @@ class SettingsController extends Controller
   public function status(Request $request)
   {
  
-    dd($request->status);
+
     DB::table('settings')
       ->where('user_id', Auth::user()->id)
       ->update(['status' => $request->status, ]);
-
-    return redirect('activate');
+ 
+      return Redirect::tokenRedirect('activate', ['notice' => 'Congratulations ! Your Setting has been saved']);
   }
 
     public function model_api()

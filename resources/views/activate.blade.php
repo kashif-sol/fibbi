@@ -54,6 +54,9 @@
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
         }
 
+        .btn-secondary{
+            background: #008060 !important;
+        }
         .product-identifier {
             box-sizing: border-box;
 
@@ -219,6 +222,24 @@
 
 @endpush
 
+@php 
+
+if(isset($newsetting))
+{
+    if($newsetting->status == 1)
+    {
+        $btn_label = "Activated";
+        $btn_val = 1;
+        $btn_value = "Deactivate";
+    }else{
+        $btn_label = "Deactivated";
+        $btn_val = 1;
+        $btn_value = "Activate";
+    }
+}
+
+@endphp
+
 @section('content')
 
 <body style="padding: 20px">
@@ -229,9 +250,9 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-md-10">
-                            <p style="margin-top: 4px;">The Fibbl app is <b>activated</b>.</p>
+                            <p style="margin-top: 4px;">The Fibbl app is <b>{{$btn_label}}</b>.</p>
                         </div>
-                        <div class="col-md-2" style="text-align: left"><button class="btn btn-default" id="btntop" onclick="changevalue()" name="status" value="0" style="float: right; border:1px solid black">Deactivate</button></div>
+                        <div class="col-md-2" style="text-align: left"><button class="btn btn-secondary" id="btntop" onclick="changevalue()" name="status" value="{{$btn_val}}" >{{$btn_value}}</button></div>
                     </div>
                 </div>
             </div>
