@@ -238,7 +238,17 @@
 @endpush
 
 @php 
-
+$icon_position = array(
+    array("title" => "Insert above" , "value" => "1"),
+    array("title" => "Insert inside" , "value" => "2"),
+    array("title" => "Insert below" , "value" => "3")
+  ); 
+  $identifier = array(
+    array("title" => "handle" , "value" => "handle"),
+    array("title" => "product_id" , "value" => "product_id"),
+    array("title" => "barcode" , "value" => "barcode"),
+    array("title" => "sku" , "value" => "sku")
+  ); 
 $btn_label = "Deactivated";
 $btn_val = 1;
 $btn_value = "Activate";
@@ -272,7 +282,7 @@ if(isset($newsetting))
                         <input type="hidden" name="status" value="{{$btn_val}}" >
                     <div class="row">
                         <div class="col-md-10 d-flex align-items-center">
-                            <p style=" font-size: 17px;  margin: 0;">The Fibbl app is <b>{{$btn_label}}</b>.</p>
+                            <p style=" font-size: 14px;  margin: 0; ">The Fibbl app is <b>{{$btn_label}}</b>.</p>
                         </div>
                         <div class="col-md-2" style="text-align: left"><button type="submit" class="btn btn-secondary" id="btntop"  name="status" value="{{$btn_val}}" >{{$btn_value}}</button></div>
                     </div>
@@ -364,8 +374,9 @@ if(isset($newsetting))
                                     <div class="col-md-12">
                                         <label>Product Identifier</label><br>
                                         <select name="product_identifier" class="product-identifier" id="product_identifier">
-                                            <option value="SKU"  @if (isset($newsetting) && $newsetting->product_identifier == "SKU") selected @endif>SKU</option>
-                                            <option value="ID" @if (isset($newsetting) && $newsetting->product_identifier == "ID") selected @endif>ID</option>
+                                            @foreach ($identifier as $product_identifier)
+                                            <option @if(isset($newsetting) && $newsetting->product_identifier == $product_identifier['value']) selected @endif value="{{$product_identifier['value']}}">{{$product_identifier['title']}}</option>
+                                        @endforeach
 
                                         </select>
                                     </div>
@@ -404,9 +415,10 @@ if(isset($newsetting))
                                     <div class="col-md-12">
                                         <label>Icon position</label><br>
                                         <select name="btn_postition" class="product-identifier" id="btn_postition">
-                                         
-                                            <option value="Before" @if (isset($newsetting) && $newsetting->btn_postition == "Before") selected @endif>Before</option>
-                                            <option value="After" @if (isset($newsetting) && $newsetting->btn_postition == "After") selected @endif>After</option>
+                                         @foreach ($icon_position as $icon_position)
+                                             <option @if(isset($newsetting) && $newsetting->btn_postition == $icon_position['value']) selected @endif value="{{$icon_position['value']}}">{{$icon_position['title']}}</option>
+                                         @endforeach
+                                            
 
                                         </select>
                                     </div>

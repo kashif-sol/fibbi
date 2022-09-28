@@ -58,7 +58,6 @@
 
                 border: 1px solid #C9CCCF;
                 border-radius: 4px;
-                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
 
 
             }
@@ -70,7 +69,7 @@
         </style>
     </head>
 
-    <body class="mt-3" style="padding: 20px">
+    <body class="mt-3" style="padding: 20px; background: #F6F6F7;">
         <div class="container">
 
 

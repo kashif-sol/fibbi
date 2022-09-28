@@ -6,7 +6,7 @@
             font-family: 'SFProText';
             font-style: normal;
             font-weight: 600;
-            font-size: 22px;
+            font-size: 16px;
             line-height: 24px;
             color: #202223;
         }
@@ -17,7 +17,7 @@
             font-family: 'SFProText';
             font-style: normal;
             font-weight: 400;
-            font-size: 17px;
+            font-size: 14px;
             line-height: 22px;
             color: #202223;
             margin-bottom: 25px;
@@ -66,7 +66,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-11">
-                        <h1 class="heading">Welcome to the Fibbi Shopify app!</h1>
+                        <h1 class="heading">Welcome to the Fibbl Shopify app!</h1>
                     </div>
                     <div class="col-md-1">
                         <p style="text-align: right;"><strong style="font-size: 22px">...</strong></p>
@@ -93,14 +93,14 @@
                     <p class="para">To get started using the Shopify app, <span style="font-weight: bold;">you need an
                             account</span> on the Fibbl platform where you will find the Shopify specific tokens.</p>
 
-                    <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 17px;"> Click
+                    <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 14px;"> Click
                             here
                             to sign up and create an account.</span></a>
 
-                    <p class="para" style="margin-top:20px;"> Once logged in, go to this link to retrieve your tokens.</p>
+                    <p class="para" style="margin-top:20px;"> Once logged in, go to <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"> <span style="color: #2C6ECB;font-size: 14px;">this link to</span></a> retrieve your tokens.</p>
                     <div class="row">
                         <div class="col-sm-12">
-                            <a class="btn btn-secondary" href="{{route('addToken')}}" style="background: #008060">Activate Fibbi</a>
+                            <a class="btn btn-secondary" href="{{route('addToken')}}" style="background: #008060;font-size: 14px;font-weight: 500;">Activate Fibbl</a>
                             <a class="second-btn">Learn more</a>
                         </div>
                         {{-- <div class="col-sm-3">
