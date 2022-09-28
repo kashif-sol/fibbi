@@ -6,20 +6,21 @@
             font-family: 'SFProText';
             font-style: normal;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 22px;
             line-height: 24px;
             color: #202223;
         }
 
         .para {
             width: 100%;
-            height: 43px;
+         
             font-family: 'SFProText';
             font-style: normal;
             font-weight: 400;
-            font-size: 15px;
+            font-size: 17px;
             line-height: 22px;
             color: #202223;
+            margin-bottom: 25px;
             flex: none;
             order: 1;
             align-self: stretch;
@@ -38,6 +39,7 @@
         .second-btn {
             text-decoration: none;
             padding-left: 17px;
+            font-size:17px;
         }
 
         .parat {
@@ -58,7 +60,7 @@
 
 @endpush
 @section('content')
-<body class="mt-2" style="padding: 20px">
+<body class="mt-2" style="padding: 20px; background: #F6F6F7;">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -67,7 +69,7 @@
                         <h1 class="heading">Welcome to the Fibbi Shopify app!</h1>
                     </div>
                     <div class="col-md-1">
-                        <p style="text-align: right;"><strong>...</strong></p>
+                        <p style="text-align: right;"><strong style="font-size: 22px">...</strong></p>
                     </div>
                 </div>
                 <div class="body">
@@ -91,19 +93,19 @@
                     <p class="para">To get started using the Shopify app, <span style="font-weight: bold;">you need an
                             account</span> on the Fibbl platform where you will find the Shopify specific tokens.</p>
 
-                    <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 16px;"> Click
+                    <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 17px;"> Click
                             here
                             to sign up and create an account.</span></a>
 
-                    <p class="para"> Once logged in, go to this link to retrieve your tokens.</p>
+                    <p class="para" style="margin-top:20px;"> Once logged in, go to this link to retrieve your tokens.</p>
                     <div class="row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-12">
                             <a class="btn btn-secondary" href="{{route('addToken')}}" style="background: #008060">Activate Fibbi</a>
-                            <a class="second-btn">learn More</a>
+                            <a class="second-btn">Learn more</a>
                         </div>
-                        <div class="col-sm-3">
+                        {{-- <div class="col-sm-3">
 
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>

@@ -24,8 +24,17 @@
         .header {
             font-family: 'SFProText';
             font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            color: #202223;
+            margin-bottom:20px;
+        }
+        .header2 {
+            font-family: 'SFProText';
+            font-style: normal;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 17px;
             line-height: 24px;
             color: #202223;
         }
@@ -51,7 +60,6 @@
 
             border: 1px solid #C9CCCF;
             border-radius: 4px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary{
@@ -76,7 +84,6 @@
             /* Border Neutral/Subdued */
 
             border: 1px solid #BABFC3;
-            box-shadow: 0px 0px 5px rgb(0 0 0 / 5%), 0px 1px 2px rgb(0 0 0 / 15%);
             border-radius: 4px;
         }
 
@@ -128,6 +135,9 @@
 
 
             color: #6D7175;
+        }
+        .para2{
+            margin-top: 30px;
         }
 
         .hide {
@@ -211,12 +221,17 @@
 
         .card {
             background: #FFFFFF;
-            box-shadow: 0px 0px 5px rgb(0 0 0 / 5%), 0px 1px 2px rgb(0 0 0 / 15%);
             font-family: 'SFProText';
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
+            border:none;
         }
+        label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
 
     </style>
 
@@ -246,18 +261,18 @@ if(isset($newsetting))
 
 @section('content')
 
-<body style="padding: 20px">
+<body style="padding: 20px; background: #F6F6F7;">
 
     <div class="container mt-3">
         <div class="card first">
             <div class="card-body">
-                <div class="card-title">
+                <div class="card-title m-0">
                     <form action="activatebtn" method="post">
                         @sessionToken
                         <input type="hidden" name="status" value="{{$btn_val}}" >
                     <div class="row">
-                        <div class="col-md-10">
-                            <p style="margin-top: 4px;">The Fibbl app is <b>{{$btn_label}}</b>.</p>
+                        <div class="col-md-10 d-flex align-items-center">
+                            <p style=" font-size: 17px;  margin: 0;">The Fibbl app is <b>{{$btn_label}}</b>.</p>
                         </div>
                         <div class="col-md-2" style="text-align: left"><button type="submit" class="btn btn-secondary" id="btntop"  name="status" value="{{$btn_val}}" >{{$btn_value}}</button></div>
                     </div>
@@ -267,14 +282,14 @@ if(isset($newsetting))
         </div>
         <div class="row mt-3">
             <div class="col-md-5">
-                <h1 class="header">Fibbl token</h1>
+                <h1 class="header2">Fibbl token</h1>
                 <div class="row">
-                    <p class="para">For authorization and use of Fibbl's Shopify app, company specific tokens needs to be added. 
+                    <p class="para para2">For authorization and use of Fibbl's Shopify app, company specific tokens needs to be added. 
                         Token and secret can be found here in the Fibbl platform. 
                     </p>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
@@ -304,15 +319,16 @@ if(isset($newsetting))
                 </div>
             </div>
         </div>
+        <div class="container">
         <form action="settings" method="post">
             @sessionToken
         <div class="row" style="margin-top:20px">
-            <div class="col-md-1"></div>
-            <div class="col-md-4" style="margin-right: 16px; padding: 0;">
+            
+            <div class="col-md-5" >
 
                 <div class="tooltip">
                     <!-- <span class="tooltiptext">Tooltip text</span> -->
-                    <h1 class="header">App Settings <i class="fa fa-question-circle" aria-hidden="true"></i></h1>
+                    <h1 class="header2">App Settings <i class="fa fa-question-circle" aria-hidden="true"></i></h1>
                     <div class="tooltiptext">
                         <div class="card">
                             <div class="card-body">
@@ -331,13 +347,13 @@ if(isset($newsetting))
                     </div>
                 </div>
                 {{-- <div class="row"> --}}
-                    <p class="para">For authorization and use of Fibbl’s Shopify app, company specific tokens
+                    <p class="para para2">For authorization and use of Fibbl’s Shopify app, company specific tokens
                         needs
                         to be added. Token and secret can be found here in the Fibbl platform. </p>
                 {{-- </div> --}}
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7 mt-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
@@ -369,15 +385,15 @@ if(isset($newsetting))
         </div>
 
         <div class="row" style="margin-top:20px;margin-bottom: 20px;">
-            <div class="col-md-1"></div>
-            <div class="col-md-4" style="margin-right: 16px; padding: 0;">
-                <h1 class="header">Button position</h1>
+         
+            <div class="col-md-5" >
+                <h1 class="header2">Button position</h1>
                 <div class="row">
                     <p class="para">The app will by default add standardized clickable icons which represents the
                         different display technologies.</p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7 mt-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
@@ -445,10 +461,11 @@ if(isset($newsetting))
                 </div>
             </div>
         </div>
-            <div class="col-md-11 mb-2">
+            <div class="col-md-12 mb-5">
                 <button type="submit" style="float: right;background: #008060 !important;" class="btn btn-secondary">Save</button>
             </div>
         </form>
+    </div>
         </div>
         
     </div>
