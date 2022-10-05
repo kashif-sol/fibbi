@@ -539,10 +539,8 @@ if(isset($newsetting))
         }
         });
     }
-
-    setInterval(
-        GetSelector();
-    , 3000);
+    setInterval(GetSelector, 3000);
+ 
         
         function GetSelector()
         {
