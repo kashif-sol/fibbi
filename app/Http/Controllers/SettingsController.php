@@ -19,6 +19,8 @@ class SettingsController extends Controller
         $product_identifier=$req->product_identifier;
         $google_id=$req->google_id;
         $btn_postition=$req->btn_postition;
+        $btn_postition2=$req->btn_postition2;
+        $btn_postition3=$req->btn_postition3;
         $css=$req->css;
         $user_id= Auth::user()->id;
         $newsetting = Setting::updateOrCreate([
@@ -27,6 +29,8 @@ class SettingsController extends Controller
             'product_identifier'     => $product_identifier,
             'google_id' => $google_id,
             'btn_postition'    => $btn_postition,
+            'btn_postition2'    => $btn_postition2,
+            'btn_postition3'    => $btn_postition3,
             'css'   => $css
         
       ]);

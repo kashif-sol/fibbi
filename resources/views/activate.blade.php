@@ -238,11 +238,24 @@
 @endpush
 
 @php 
+
 $icon_position = array(
-    array("title" => "Insert above" , "value" => "1"),
-    array("title" => "Insert inside" , "value" => "2"),
-    array("title" => "Insert below" , "value" => "3")
+    array("title" => "Insert above" , "value" => "A"),
+    array("title" => "Insert inside" , "value" => "I"),
+    array("title" => "Insert below" , "value" => "B")
   ); 
+
+  $icon_position2 = array(
+    array("title" => "Top" , "value" => "T"),
+    array("title" => "Bottom" , "value" => "B")
+  ); 
+
+  $icon_position3 = array(
+    array("title" => "Left" , "value" => "L"),
+    array("title" => "Middle" , "value" => "M"),
+    array("title" => "Right" , "value" => "R")
+  ); 
+
   $identifier = array(
     array("title" => "handle" , "value" => "handle"),
     array("title" => "product_id" , "value" => "product_id"),
@@ -411,15 +424,29 @@ if(isset($newsetting))
                             <h1 class="header">Set the button position</h1>
                            
                                 <div class="row">
-
                                     <div class="col-md-12">
                                         <label>Icon position</label><br>
                                         <select name="btn_postition" class="product-identifier" id="btn_postition">
                                          @foreach ($icon_position as $icon_position)
                                              <option @if(isset($newsetting) && $newsetting->btn_postition == $icon_position['value']) selected @endif value="{{$icon_position['value']}}">{{$icon_position['title']}}</option>
                                          @endforeach
-                                            
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Icon position</label><br>
+                                        <select name="btn_postition2" class="product-identifier" id="btn_postition">
+                                         @foreach ($icon_position2 as $icon_position2)
+                                             <option @if(isset($newsetting) && $newsetting->btn_postition2 == $icon_position2['value']) selected @endif value="{{$icon_position2['value']}}">{{$icon_position2['title']}}</option>
+                                         @endforeach
+                                        </select>
+                                    </div>
 
+                                    <div class="col-md-12">
+                                        <label>Icon position</label><br>
+                                        <select name="btn_postition3" class="product-identifier" id="btn_postition">
+                                         @foreach ($icon_position3 as $icon_position3)
+                                             <option @if(isset($newsetting) && $newsetting->btn_postition3 == $icon_position3['value']) selected @endif value="{{$icon_position3['value']}}">{{$icon_position3['title']}}</option>
+                                         @endforeach
                                         </select>
                                     </div>
 

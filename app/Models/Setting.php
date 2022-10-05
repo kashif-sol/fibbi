@@ -9,5 +9,5 @@ class Setting extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'product_identifier', 'google_id','btn_postition','css',
+        'user_id', 'product_identifier', 'google_id','btn_postition','btn_postition2','btn_postition3','css',
     ];}
