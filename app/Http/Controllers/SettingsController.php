@@ -46,6 +46,14 @@ class SettingsController extends Controller
     return response()->json(['status' => "success" , "data" => $response]);
   }
 
+  public function update_selector(Request $request)
+  {
+    $shop = User::where("name" , $request->shop)->first();
+    DB::table('settings')
+      ->where('user_id', $shop->id)
+      ->update(['css' => $request->css]);
+    return response()->json(['status' => "success" , "data" => "updated"]);
+  }
 
   public function activeFibbl()
   {

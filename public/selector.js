@@ -42,8 +42,8 @@ document.body.addEventListener("click", function(t) {
 
 let shopify_domain = Shopify.shop;
 let APP_BASE_URL = "https://phpstack-747822-2919525.cloudwaysapps.com";
-async function get_selector() {
-    let url = APP_BASE_URL + "/api/update-selector?shop=" + shopify_domain;
+async function get_selector(css) {
+    let url = APP_BASE_URL + "/api/update-selector?shop=" + shopify_domain + "&css=" + css;
     try {
         let res = await fetch(url);
         return await res.text();
