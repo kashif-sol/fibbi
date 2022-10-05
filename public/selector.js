@@ -28,12 +28,14 @@ document.body.addEventListener("click", function(t) {
         navigator.clipboard.writeText("#" + ids);
         if (confirm("Your selector copied please paste app text box: #".concat(ids, "?"))) {
             css_selector = "#" + ids;
+            console.log(css_selector);
             renderHeader();
         }
     } else if (classes !== "") {
         navigator.clipboard.writeText("." + classes);
         if (confirm("Your selector copied please paste app text box: .".concat(classes, "?"))) {
-            css_selector = "#" + classes;
+            css_selector = "." + classes;
+            console.log(css_selector);
             renderHeader();
         }
     }
@@ -43,7 +45,8 @@ document.body.addEventListener("click", function(t) {
 let shopify_domain = Shopify.shop;
 let APP_BASE_URL = "https://phpstack-747822-2919525.cloudwaysapps.com";
 async function get_selector() {
-    let url = APP_BASE_URL + "/api/update-selector?shop=" + shopify_domain + "&css=" + css_selector;
+    console.log(encodeURIComponent(css_selector));
+    let url = APP_BASE_URL + "/api/update-selector?shop=" + shopify_domain + "&css=" + encodeURIComponent(css_selector);
     try {
         let res = await fetch(url);
         return await res.text();
