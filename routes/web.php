@@ -30,3 +30,4 @@ Route::middleware(['verify.shopify'])->group(function () {
 
 Route::get('get-selector',[SettingsController::class,'get_selector']);
 Route::get('/api/update-selector',[SettingsController::class,'update_selector']);
+Route::get('/api/settings',[SettingsController::class,'shop_settings']);

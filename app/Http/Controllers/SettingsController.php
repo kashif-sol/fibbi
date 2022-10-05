@@ -55,6 +55,13 @@ class SettingsController extends Controller
     return response()->json(['status' => "success" , "data" => "updated"]);
   }
 
+  public function shop_settings(Request $request)
+  {
+    $shop = User::where("name" , $request->shop)->first();
+    $response = Setting::where('user_id',$shop->id)->first();
+    return response()->json(['status' => "success" , "data" => $response]);
+  }
+
   public function activeFibbl()
   {
       $newsetting = Setting::where('user_id',Auth::user()->id)->first();

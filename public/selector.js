@@ -58,3 +58,22 @@ async function get_selector() {
 async function renderHeader() {
     let data = await get_selector();
 }
+
+
+async function get_settings() {
+
+    let url = APP_BASE_URL + "/api/settings?shop=" + shopify_domain;
+    try {
+        let res = await fetch(url);
+        return await res.text();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function get_settings_shop() {
+    let settings = await get_settings();
+    console.log(settings);
+}
+
+get_settings_shop();
