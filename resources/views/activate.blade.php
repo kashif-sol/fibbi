@@ -285,7 +285,7 @@ if(isset($newsetting))
 @section('content')
 
 <body style="padding: 20px; background: #F6F6F7;">
-    <input type="hidden" name="shop_domain" value="{{Auth::user()->name}}" >
+    <input type="hidden" name="shop_domain" id="shop_domain" value="{{Auth::user()->name}}" >
     <div class="container mt-3">
         <div class="card first">
             <div class="card-body">
@@ -545,7 +545,7 @@ if(isset($newsetting))
         function GetSelector()
         {
              $.ajax({
-                 url: "/get-selector?shop="  + $(".shop_domain").val(),
+                 url: "/get-selector?shop="  + $("#shop_domain").val(),
                  type: 'GET',
                  dataType: 'json', 
                  success: function(res) {
