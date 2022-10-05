@@ -15,7 +15,7 @@ class AddBtnPostition2SettingsTable extends Migration
     {
         Schema::table('settings', function (Blueprint $table) {
             $table->string('btn_postition2')->nullable();
-            $table->string('btn_postition3')>nullable();
+            $table->string('btn_postition3')->nullable();
         });
     }
 

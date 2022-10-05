@@ -424,7 +424,7 @@ if(isset($newsetting))
                             <h1 class="header">Set the button position</h1>
                            
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 ">
                                         <label>Icon position</label><br>
                                         <select name="btn_postition" class="product-identifier" id="btn_postition">
                                          @foreach ($icon_position as $icon_position)
@@ -432,7 +432,7 @@ if(isset($newsetting))
                                          @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-2">
                                         <label>Icon position</label><br>
                                         <select name="btn_postition2" class="product-identifier" id="btn_postition">
                                          @foreach ($icon_position2 as $icon_position2)
@@ -441,7 +441,7 @@ if(isset($newsetting))
                                         </select>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-2">
                                         <label>Icon position</label><br>
                                         <select name="btn_postition3" class="product-identifier" id="btn_postition">
                                          @foreach ($icon_position3 as $icon_position3)
