@@ -73,7 +73,20 @@ async function get_settings() {
 
 async function get_settings_shop() {
     let settings = await get_settings();
-    console.log(settings);
+    var app_status = settings.status;
+    if (app_status == 1) {
+        var script = document.createElement('script');
+        script.type = 'module';
+        script.setAttribute("data-fibbl-config", "");
+        script.setAttribute("data-locale", "sv-SV");
+        script.setAttribute("data-analytics-type", "google");
+        script.setAttribute("data-analytics-id", settings.google_id);
+        script.src = 'https://cdn.fibbl.com/fibbl-bar.js';
+        document.head.appendChild(script);
+        var app_html_fibbl = '<fibbl-bar data-product-id="123456"> <button data-element="fibbl-model-viewer">3D</button>  <button data-element="fibbl-carousel">Carousel</button><button data-element="fibbl-qr-code" data-type="vto">VTO</button></fibbl-bar>';
+        var css_seelctor = document.getElementsByClassName(settings.css);
+        css_seelctor.appendChild(app_html_fibbl);
+    }
 }
 
 get_settings_shop();
