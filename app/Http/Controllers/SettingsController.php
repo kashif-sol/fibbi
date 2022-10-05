@@ -39,6 +39,13 @@ class SettingsController extends Controller
 
   }
 
+  public function get_selector(Request $request)
+  {
+    $shop = User::where("name" , $request->shop)->first();
+    $response = Setting::where('user_id',$shop->id)->first();
+    return response()->json(['status' => "success" , "data" => $response]);
+  }
+
 
   public function activeFibbl()
   {

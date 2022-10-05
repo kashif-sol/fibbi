@@ -27,3 +27,5 @@ Route::middleware(['verify.shopify'])->group(function () {
     Route::post('settings',[SettingsController::class,'index']); 
     Route::post('activatebtn',[SettingsController::class,'status'])->name("activatebtn"); 
 });
+
+Route::get('get-selector',[SettingsController::class,'get_selector']);

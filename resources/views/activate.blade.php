@@ -285,7 +285,7 @@ if(isset($newsetting))
 @section('content')
 
 <body style="padding: 20px; background: #F6F6F7;">
-
+    <input type="hidden" name="shop_domain" value="{{Auth::user()->name}}" >
     <div class="container mt-3">
         <div class="card first">
             <div class="card-body">
@@ -539,5 +539,23 @@ if(isset($newsetting))
         }
         });
     }
+
+    setInterval(
+        GetSelector();
+    , 3000);
+        
+        function GetSelector()
+        {
+             $.ajax({
+                 url: "/get-selector?shop="  + $(".shop_domain").val(),
+                 type: 'GET',
+                 dataType: 'json', 
+                 success: function(res) {
+                     console.log(res);
+                 }
+             });
+        }
+  
+
     </script>
 @endpush
