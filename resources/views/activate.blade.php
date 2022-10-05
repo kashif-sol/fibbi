@@ -554,6 +554,7 @@ if(isset($newsetting))
                         if(res.data != "" && res.data != null )
                         {
                             $("#css_slector").val(res.data);
+                            $(".close").click();
                             $("#basicModal").modal("hide");
                         }
                     }
