@@ -458,7 +458,7 @@ if(isset($newsetting))
 
                                     <div class="col-md-12 mt-4">
                                         <label>CSS element</label><br>
-                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css ?? ''}}">
+                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css ?? ''}}" id="css_slector">
                                     </div>
                                     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -549,7 +549,14 @@ if(isset($newsetting))
                  type: 'GET',
                  dataType: 'json', 
                  success: function(res) {
-                     console.log(res);
+                    if(res.status == "success")
+                    {
+                        if(res.data != "" && res.data != null )
+                        {
+                            $("#css_slector").val(res.data);
+                            $("#basicModal").modal("hide");
+                        }
+                    }
                  }
              });
         }
