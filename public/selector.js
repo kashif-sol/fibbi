@@ -52,6 +52,6 @@ async function get_selector(css) {
     }
 }
 
-async function renderHeader() {
-    let data = await get_selector();
+async function renderHeader(css) {
+    let data = await get_selector(css);
 }
