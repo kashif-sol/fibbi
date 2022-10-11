@@ -197,7 +197,7 @@
             width: 32%;
 
             color: black;
-            text-align: center;
+            text-align: left;
             border-radius: 6px;
             padding: 5px 0;
 
@@ -233,6 +233,9 @@
     font-weight: 500;
 }
 
+div#basicModal {
+    top: 18%;
+}
     </style>
 
 @endpush
@@ -303,16 +306,16 @@ if(isset($newsetting))
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-md-5">
                 <h1 class="header2">Fibbl token</h1>
                 <div class="row">
-                    <p class="para para2">For authorization and use of Fibbl's Shopify app, company specific tokens needs to be added. 
+                    <p class="para">For authorization and use of Fibbl's Shopify app, company specific tokens needs to be added. 
                         Token and secret can be found here in the Fibbl platform. 
                     </p>
                 </div>
             </div>
-            <div class="col-md-7 mt-5">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
@@ -351,7 +354,7 @@ if(isset($newsetting))
 
                 <div class="tooltip">
                     <!-- <span class="tooltiptext">Tooltip text</span> -->
-                    <h1 class="header2">App Settings <i class="fa fa-question-circle" aria-hidden="true"></i></h1>
+                    <h1 class="header2">App settings <i class="fa fa-question-circle" aria-hidden="true"></i></h1>
                     <div class="tooltiptext">
                         <div class="card">
                             <div class="card-body">
@@ -369,11 +372,9 @@ if(isset($newsetting))
                         </div>
                     </div>
                 </div>
-                {{-- <div class="row"> --}}
-                    <p class="para para2">For authorization and use of Fibbl’s Shopify app, company specific tokens
-                        needs
-                        to be added. Token and secret can be found here in the Fibbl platform. </p>
-                {{-- </div> --}}
+               
+                    <p class="para">The product ID connects Fibbl models to your products, and enables Fibbl technologies and content to be displayed on your website. </p>
+               
 
             </div>
             <div class="col-md-7 mt-3">
@@ -411,12 +412,22 @@ if(isset($newsetting))
         <div class="row" style="margin-top:20px;margin-bottom: 20px;">
          
             <div class="col-md-5" >
-                <h1 class="header2">Button position</h1>
+                <h1 class="header2 mt-4">Smart selector</h1>
                 <div class="row">
-                    <p class="para">The app will by default add standardized clickable icons which represents the
-                        different display technologies.</p>
+                    <p class="para">Use the element selector and paste the selected CSS class or ID here. </p>
                 </div>
+
+                <div class="mt-4" >
+                    <h1 class="header2">Button position</h1>
+                    <div class="row">
+                        <p class="para">The app will by default add standardized clickable icons which represents the
+                            different display technologies.</p>
+                    </div>
+                </div>
+
             </div>
+
+            
             <div class="col-md-7 mt-3">
                 <div class="card">
                     <div class="card-body">
@@ -424,6 +435,17 @@ if(isset($newsetting))
                             <h1 class="header">Set the button position</h1>
                            
                                 <div class="row">
+
+                                    <div class="col-md-12">
+                                        <label>CSS element</label><br>
+                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css ?? ''}}" id="css_slector">
+                                    </div>
+
+                                    <div class="col-md-12" style=" margin-top: 10px;">
+                                        <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#basicModal">Select element</a>
+
+                                    </div>
+                                    
                                     <div class="col-md-12 ">
                                         <label>Icon position</label><br>
                                         <select name="btn_postition" class="product-identifier" id="btn_postition">
@@ -450,16 +472,10 @@ if(isset($newsetting))
                                         </select>
                                     </div>
 
-                                    <div class="col-md-12" style=" margin-top: 10px;">
-                                        <a href="#" class="btn btn-light" style="float: right;" data-toggle="modal" data-target="#basicModal">Select element</a>
-
-                                    </div>
+                                    
                                     
 
-                                    <div class="col-md-12 mt-4">
-                                        <label>CSS element</label><br>
-                                        <input type="text" class="inputs" name="css" value="{{$newsetting->css ?? ''}}" id="css_slector">
-                                    </div>
+                                    
                                     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -554,8 +570,8 @@ if(isset($newsetting))
                         if(res.data != "" && res.data != null )
                         {
                             $("#css_slector").val(res.data);
-                            $(".close").click();
-                            $("#basicModal").modal("hide");
+                           /// $(".close").click();
+                           // $("#basicModal").modal("hide");
                         }
                     }
                  }

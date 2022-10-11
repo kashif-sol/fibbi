@@ -3,9 +3,9 @@ let query_params = (new URL(document.location)).searchParams;
 let smart_selector = query_params.get("smartSelector");
 let product_data = meta.product;
 let product_path = window.location.href.split('?')[0] + ".json";
- 
 
- async function get_product_details() {
+
+async function get_product_details() {
     try {
         let res = await fetch(product_path);
         return await res.text();
@@ -16,8 +16,7 @@ let product_path = window.location.href.split('?')[0] + ".json";
 
 
 
-if(smart_selector != "" && ( smart_selector == true || smart_selector == "true"))
-{
+if (smart_selector != "" && (smart_selector == true || smart_selector == "true")) {
 
     document.body.addEventListener("mouseover", function(r) {
         var o = r.target;
@@ -105,19 +104,14 @@ async function get_settings_shop() {
         var btn_postition2 = settings.btn_postition2;
         var btn_postition3 = settings.btn_postition3;
         var product_identifier = product_data.id;
-        if(product_ident == "product_id")
-        {
+        if (product_ident == "product_id") {
             product_identifier = product_data.id;
-        }
-        else if(product_ident == "barcode")
-        {
+        } else if (product_ident == "barcode") {
             product_identifier = product_details.product.variants[0].barcode;
-        }
-        else if(product_ident == "sku")
-        {
+        } else if (product_ident == "sku") {
             product_identifier = product_data.variants[0].sku;
         }
-        
+
 
         var script = document.createElement('script');
         script.type = 'module';
@@ -127,50 +121,47 @@ async function get_settings_shop() {
         script.setAttribute("data-analytics-id", settings.google_id);
         script.src = 'https://cdn.fibbl.com/fibbl-bar.js';
         document.head.appendChild(script);
-        var style_code = 'position: absolute;width: 100%;z-index: 999999999999;display: block !important;';
-        if(btn_postition2 == "B"){
+        var style_code = 'position: relative;width: 100%;z-index: 999999999999;display: block !important;';
+        if (btn_postition2 == "B") {
             style_code += 'bottom: -36px;';
-        }else if(btn_postition2 == "T"){
+        } else if (btn_postition2 == "T") {
             style_code += 'top: -0px;';
         }
 
         //head = document.head || document.getElementsByTagName('head')[0],
         //style = document.createElement('style');
-       // head.appendChild(style);
+        // head.appendChild(style);
         ///style.styleSheet.cssText = style_code;
 
-        var app_html_fibbl = '<div id="fibbl-app-container" style="'+style_code+'"><fibbl-bar data-product-id="'+product_identifier+'"> <button data-element="fibbl-model-viewer">3D</button>  <button data-element="fibbl-carousel">Carousel</button><button data-element="fibbl-qr-code" data-type="vto">VTO</button></fibbl-bar></div>';
-        if(settings.css.charAt(0) === '#')
-        {
+        var app_html_fibbl = '<div id="fibbl-app-container" style="' + style_code + '"><fibbl-bar data-product-id="' + product_identifier + '"> <button data-element="fibbl-model-viewer">3D</button>  <button data-element="fibbl-carousel">Carousel</button><button data-element="fibbl-qr-code" data-type="vto">VTO</button></fibbl-bar></div><style>.active_fibble_container{position: relative;}<style>';
+        if (settings.css.charAt(0) === '#') {
             var id_name = settings.css.substring(1);
-            if(btn_postition1 == "I")
+            var child = document.getElementById(id_name).parentNode;
+            child.classList.add('active_fibble_container');
+            if (btn_postition1 == "I")
                 document.getElementById(id_name).innerHTML += app_html_fibbl;
-            else if(btn_postition1 == "A")
-            {
-                document.getElementById(id_name).insertAdjacentHTML('beforebegin',app_html_fibbl);
-            } 
-            else if(btn_postition1 == "B")
-            {
-                document.getElementById(id_name).insertAdjacentHTML('afterend',app_html_fibbl);
-            } 
-            
-        }else{
-           
-            var class_name = settings.css.substring(1);
-            if(btn_postition1 == "I")
-                document.getElementsByClassName(class_name)[0].innerHTML += app_html_fibbl;
-            else if(btn_postition1 == "A")
-            {
-                document.getElementsByClassName(class_name)[0].insertAdjacentHTML('beforebegin',app_html_fibbl);
-            } 
-            else if(btn_postition1 == "B")
-            {
-                document.getElementsByClassName(class_name)[0].insertAdjacentHTML('afterend',app_html_fibbl);
+            else if (btn_postition1 == "A") {
+                document.getElementById(id_name).insertAdjacentHTML('beforebegin', app_html_fibbl);
+            } else if (btn_postition1 == "B") {
+                document.getElementById(id_name).insertAdjacentHTML('afterend', app_html_fibbl);
+            }
 
-            } 
-            
+        } else {
+
+            var class_name = settings.css.substring(1);
+            var child = document.getElementsByClassName(class_name)[0].parentNode;
+            child.classList.add('active_fibble_container');
+            if (btn_postition1 == "I")
+                document.getElementsByClassName(class_name)[0].innerHTML += app_html_fibbl;
+            else if (btn_postition1 == "A") {
+                document.getElementsByClassName(class_name)[0].insertAdjacentHTML('beforebegin', app_html_fibbl);
+            } else if (btn_postition1 == "B") {
+                document.getElementsByClassName(class_name)[0].insertAdjacentHTML('afterend', app_html_fibbl);
+
+            }
+
         }
-        
+
     }
 }
 

@@ -1,8 +1,14 @@
-    @extends('layouts.website')
+@extends('layouts.website')
 @section('content')
     <head>
 
     <style>
+    .card-body {
+    border: 0px !important;
+}
+.card {
+    border: 0px !important;
+}
             .header {
                 font-family: 'SFProText';
                 font-style: normal;
