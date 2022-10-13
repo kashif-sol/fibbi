@@ -93,15 +93,15 @@
                     <p class="para">To get started using the Shopify app, <span style="font-weight: bold;">you need an
                             account</span> on the Fibbl platform where you will find the Shopify specific tokens.</p>
 
-                    <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 14px;"> Click
+                    <a class="parat" href="https://app.fibbl.com/register" target="_blank" style="line-height: 25px ;text-decoration: none"><span style="color: #2C6ECB;font-size: 14px;"> Click
                             here
                             to sign up and create an account.</span></a>
 
-                    <p class="para" style="margin-top:20px;"> Once logged in, go to <a class="parat" href="https://www.fibbl.com/" target="_blank" style="line-height: 25px ;text-decoration: none"> <span style="color: #2C6ECB;font-size: 14px;">this link to</span></a> retrieve your tokens.</p>
+                    <p class="para" style="margin-top:20px;"> Once logged in, go to <a class="parat" href="https://app.fibbl.com/settings#tech" target="_blank" style="line-height: 25px ;text-decoration: none"> <span style="color: #2C6ECB;font-size: 14px;">this link to</span></a> retrieve your tokens.</p>
                     <div class="row">
                         <div class="col-sm-12">
                             <a class="btn btn-secondary" href="{{route('addToken')}}" style="background: #008060;font-size: 14px;font-weight: 500;">Activate Fibbl</a>
-                            <a class="second-btn">Learn more</a>
+                            <a href=" https://intercom.help/fibbl/en/" class="second-btn">Learn more</a>
                         </div>
                         {{-- <div class="col-sm-3">
 
