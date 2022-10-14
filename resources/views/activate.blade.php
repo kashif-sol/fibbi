@@ -236,6 +236,22 @@
 div#basicModal {
     top: 18%;
 }
+
+.card.unsaved-changes-bar {
+    position: fixed;
+    top: 25px;
+    z-index: 999;
+    width: 100%;
+    border: 1px solid #ccc;
+    left: 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    vertical-align: middle;
+    padding-top: 16px;
+    color: red;
+    display: none;
+}
     </style>
 
 @endpush
@@ -290,6 +306,16 @@ if(isset($newsetting))
 <body style="padding: 20px; background: #F6F6F7;">
     <input type="hidden" name="shop_domain" id="shop_domain" value="{{Auth::user()->name}}" >
     <div class="container mt-3">
+
+       <div class="card unsaved-changes-bar">
+            <div class="card-body">
+                <div class="card-title m-0">
+                    <p>Please save your changes.</p>
+                </div>
+            </div>
+        </div>
+
+
         <div class="card first">
             <div class="card-body">
                 <div class="card-title m-0">
@@ -311,7 +337,7 @@ if(isset($newsetting))
                 <h1 class="header2">Fibbl token</h1>
                 <div class="row">
                     <p class="para">For authorization and use of Fibbl's Shopify app, company specific tokens needs to be added. 
-                        Token and secret can be found here in the Fibbl platform. 
+                        Token and secret can be found <a target="_blank" href="https://app.fibbl.com/settings#tech">here</a> in the Fibbl platform. 
                     </p>
                 </div>
             </div>
@@ -367,7 +393,7 @@ if(isset($newsetting))
                                     By adding your Google Analytics ID, you enable Fibbl to automatically send usage
                                     events
                                     of the display technologies to your Google Analytics account, so you can track and
-                                    evaluate the performance. Learn more here.</p>
+                                    evaluate the performance. <a href="https://intercom.help/fibbl/en/collections/3302768-installing-fibbl" target="_balnk"> Learn more here.</a></p>
                             </div>
                         </div>
                     </div>
@@ -381,12 +407,12 @@ if(isset($newsetting))
                 <div class="card">
                     <div class="card-body">
                         <div class="card-title">
-                            <h1 class="header">Setup the App function</h1>
+                            <h1 class="header">Setup the app function</h1>
                             
                                 <div class="row">
 
                                     <div class="col-md-12">
-                                        <label>Product Identifier</label><br>
+                                        <label>Product identifier</label><br>
                                         <select name="product_identifier" class="product-identifier" id="product_identifier">
                                             @foreach ($identifier as $product_identifier)
                                             <option @if(isset($newsetting) && $newsetting->product_identifier == $product_identifier['value']) selected @endif value="{{$product_identifier['value']}}">{{$product_identifier['title']}}</option>
@@ -489,13 +515,16 @@ if(isset($newsetting))
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Smart Selector</p>
-                                                    <label for="path">1. Path to use smart selector</label>
+                                                    <label for="path">1. Product page URL to use smart selector</label>
                                                     <input type="text" class="inputs" value="{{$response['onlineStorePreviewUrl'] ?? ''}}" disabled>
                                                     <div class="col-md-12 mt-3">
-                                                        <p>2. A new window will be opened from your site</p>
+                                                        <p>2. A new window will be opened from your website</p>
                                                     </div>
                                                     <div class="col-md-12 mt-3">
-                                                        <p>3. Move your mouse and select the position you want</p>
+                                                        <p>3. Move your mouse and select the element where you want to display Fibbl buttons</p>
+                                                    </div>
+                                                    <div class="col-md-12 mt-3">
+                                                        <p>4. Click on the selected element name, it will be automatically pasted in the Shopify app. Go back to app and select button position</p>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -569,6 +598,10 @@ if(isset($newsetting))
                     {
                         if(res.data != "" && res.data != null )
                         {
+                            if(res.data !=  $("#css_slector").val())
+                            {
+                                $(".card.unsaved-changes-bar").show();
+                            }
                             $("#css_slector").val(res.data);
                            /// $(".close").click();
                            // $("#basicModal").modal("hide");
