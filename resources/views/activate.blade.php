@@ -248,21 +248,23 @@ div#basicModal {
     font-size: 16px;
     line-height: 20px;
     vertical-align: middle;
-    padding-top: 16px;
+    padding-top: 0px;
     color: #fff;
     display: none;
     background: #000;
-    border-radius: 9px;
+    border-radius: 8px;
 }
 
 .card.unsaved-changes-bar  p {
     font-size: 20px;
     font-weight: 500;
+    margin: 0px;
+    padding: 0px;
 }
 
 .unsaved-flex {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -595,6 +597,10 @@ if(isset($newsetting))
 <script type="text/javascript">
 
 $("#form_settings input , #form_settings select").change(function(){
+ $(".card.unsaved-changes-bar").show();
+});
+
+$("#form_settings input , #form_settings select").keyup(function(){
  $(".card.unsaved-changes-bar").show();
 });
 

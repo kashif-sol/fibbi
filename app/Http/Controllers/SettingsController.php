@@ -35,7 +35,7 @@ class SettingsController extends Controller
         
       ]);
       $newsetting->save();
-      return Redirect::tokenRedirect('activate', ['notice' => 'Congratulations ! Your Setting has been saved']);
+      return Redirect::tokenRedirect('activate', ['notice' => 'Your settings have been successfully updated.']);
 
   }
 

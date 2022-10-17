@@ -13,6 +13,13 @@ class TokenController extends Controller
 {
     public function home()
     {
+        $data = User::where('id', Auth::user()->id)->first();
+        if(isset($data)){
+            if(!empty($data->api_token) && !empty($data->api_secret) )
+            {
+                return redirect('activate');
+            }
+        }
         return view('index');
     }
     public function saveToken(Request $request)
@@ -43,7 +50,7 @@ class TokenController extends Controller
     {
         $data = User::where('id', Auth::user()->id)->first();
         if(isset($data)){
-            if(isset($data->api_token) && isset($data->api_secret) )
+            if(!empty($data->api_token) && !empty($data->api_secret) )
             {
                 return redirect('activate');
             }
