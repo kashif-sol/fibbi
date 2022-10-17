@@ -155,7 +155,7 @@
         }
 
         .hiddenp {
-            display: flex;
+           
             flex-direction: row;
             align-items: flex-start;
             padding: 0px 0px;
@@ -239,7 +239,7 @@ div#basicModal {
 
 .card.unsaved-changes-bar {
     position: fixed;
-    top: 25px;
+    top: 0px;
     z-index: 999;
     width: 100%;
     border: 1px solid #ccc;
@@ -249,8 +249,34 @@ div#basicModal {
     line-height: 20px;
     vertical-align: middle;
     padding-top: 16px;
-    color: red;
+    color: #fff;
     display: none;
+    background: #000;
+    border-radius: 9px;
+}
+
+.card.unsaved-changes-bar  p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.unsaved-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button#discard-btn {
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 18px;
+     min-width: 80px;
+}
+
+button#un-save-btn {
+    min-width: 80px;
+    border: 1px solid #fff;
 }
     </style>
 
@@ -307,10 +333,18 @@ if(isset($newsetting))
     <input type="hidden" name="shop_domain" id="shop_domain" value="{{Auth::user()->name}}" >
     <div class="container mt-3">
 
+
        <div class="card unsaved-changes-bar">
             <div class="card-body">
                 <div class="card-title m-0">
-                    <p>Please save your changes.</p>
+                    <div class="unsaved-flex">
+                        <p>Unsaved changes</p>
+                        <div class="buttons-section">
+                         <button type="button" id="discard-btn" class="btn btn-outline">Discard</button>
+                            <button type="button" id="un-save-btn" class="btn btn-secondary">Save</button>
+                           
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -372,7 +406,7 @@ if(isset($newsetting))
             </div>
         </div>
         <div class="container">
-        <form action="settings" method="post">
+        <form action="settings" method="post" id="form_settings">
             @sessionToken
         <div class="row" style="margin-top:20px">
             
@@ -546,7 +580,7 @@ if(isset($newsetting))
             </div>
         </div>
             <div class="col-md-12 mb-5">
-                <button type="submit" style="float: right;background: #008060 !important;" class="btn btn-secondary">Save</button>
+                <button type="submit" id="save-settin-btn" style="float: right;background: #008060 !important;" class="btn btn-secondary">Save</button>
             </div>
         </form>
     </div>
@@ -559,6 +593,20 @@ if(isset($newsetting))
 
 @push('scripts')
 <script type="text/javascript">
+
+$("#form_settings input , #form_settings select").change(function(){
+ $(".card.unsaved-changes-bar").show();
+});
+
+
+$("#discard-btn").click(function(){
+    window.location.reload();
+});
+
+$("#un-save-btn").click(function(){
+     $("#save-settin-btn").click();
+});
+
     function changevalue(){
       currentvalue = document.getElementById('btntop').value;
       if(currentvalue == 0){

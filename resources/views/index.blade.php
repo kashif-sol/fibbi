@@ -98,7 +98,7 @@
                             here
                             to sign up and create an account.</span></a>
 
-                    <p class="para" style="margin-top:20px;"> Once logged in, go to <a class="parat" href="https://app.fibbl.com/settings#tech." target="_blank" style="line-height: 25px ;text-decoration: none"> <span style="color: #2C6ECB;font-size: 14px;">this link to</span></a> retrieve your tokens.</p>
+                    <p class="para" style="margin-top:20px;"> Once logged in, go to <a class="parat" href="https://app.fibbl.com/settings#tech" target="_blank" style="line-height: 25px ;text-decoration: none"> <span style="color: #2C6ECB;font-size: 14px;">this link to</span></a> retrieve your tokens.</p>
                     <div class="row">
                         <div class="col-sm-12">
                             <a class="btn btn-secondary"  href="{{route('addToken')}}" style="background: #008060;font-size: 14px;font-weight: 500;">Activate Fibbl</a>
