@@ -342,6 +342,11 @@ return [
     */
 
     'webhooks' => [
+
+        [
+            'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'APP_UNINSTALLED'),
+            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', env("APP_URL").'/webhook/app-uninstalled')
+        ],
         /*
             [
                 'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'ORDERS_CREATE'),
@@ -366,7 +371,7 @@ return [
     'scripttags' => [
         
             [
-                'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL/selector.js')),
+                'src' => env("APP_URL"). '/selector.js',
                 'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
                 'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
             ],
