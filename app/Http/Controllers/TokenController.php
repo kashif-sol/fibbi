@@ -17,7 +17,7 @@ class TokenController extends Controller
         if(isset($data)){
             if(!empty($data->api_token) && !empty($data->api_secret) )
             {
-                return redirect('activate');
+              ///  return redirect('activate');
             }
         }
         return view('index');
