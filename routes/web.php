@@ -19,7 +19,7 @@ use App\Http\Controllers\TokenController;
 
 
 
-Route::middleware(['verify.shopify'])->group(function () {
+Route::middleware(['verify.shopify' , 'billable'])->group(function () {
     Route::get('/',[TokenController::class,'home'])->name('home');
     Route::get('addtoken',[TokenController::class,'tokenForm'])->name('addToken');
     Route::post('save_token',[TokenController::class,'saveToken'])->name('saveToken');
