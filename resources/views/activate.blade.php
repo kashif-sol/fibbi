@@ -287,8 +287,8 @@ button#un-save-btn {
 @php 
 
 $icon_position = array(
-    array("title" => "Insert above" , "value" => "A"),
     array("title" => "Insert inside" , "value" => "I"),
+    array("title" => "Insert above" , "value" => "A"),
     array("title" => "Insert below" , "value" => "B")
   ); 
 
@@ -304,8 +304,8 @@ $icon_position = array(
   ); 
 
   $identifier = array(
+        array("title" => "product_id" , "value" => "product_id"),
     array("title" => "handle" , "value" => "handle"),
-    array("title" => "product_id" , "value" => "product_id"),
     array("title" => "barcode" , "value" => "barcode"),
     array("title" => "sku" , "value" => "sku")
   ); 
@@ -458,7 +458,7 @@ if(isset($newsetting))
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label>Google Analytics ID</label><br>
-                                        <input type="text" class="inputs" name="google_id" value="{{ $newsetting->google_id ?: '' }}">
+                                        <input type="text" class="inputs" name="google_id" value="@if(isset($newsetting)){{ $newsetting->google_id ?: '' }} @endif">
                                     </div>
 
 

@@ -164,7 +164,7 @@ return [
     |
     */
 
-    'api_version' => env('SHOPIFY_API_VERSION', '2022-01'),
+    'api_version' => env('SHOPIFY_API_VERSION', '2022-10'),
 
     /*
     |--------------------------------------------------------------------------
@@ -369,12 +369,13 @@ return [
     */
 
     'scripttags' => [
-        
+         /*
             [
                 'src' => env("APP_URL"). '/selector.js',
                 'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
                 'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
             ],
+            */
         
     ],
 
